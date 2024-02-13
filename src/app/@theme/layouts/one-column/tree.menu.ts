@@ -11,7 +11,7 @@ export interface ExampleFlatNode {
   level: number;
 }
 
-export const TREE_DATA_CLIENT: FoodNode[] = [
+/*export const TREE_DATA_CLIENT: FoodNode[] = [
   {
     name: 'Rendez-vous',
     icon:'schedule',
@@ -33,7 +33,7 @@ export const TREE_DATA_CLIENT: FoodNode[] = [
       },
     ],
   },
-];
+];*/
 
 export const TREE_DATA_EMPLOYE: FoodNode[] = [
   {

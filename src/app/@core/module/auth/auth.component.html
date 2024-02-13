@@ -1,4 +1,4 @@
-<mat-dialog-content>
+
   <div class="row">
     <div class="row">
       <div class="col-11">
@@ -6,10 +6,6 @@
       </div>
       <div class="col-1"> <button mat-icon-button class="btn_close" (click)="closeDialog()"><mat-icon>close</mat-icon></button></div>
     </div>
-
-
-
-
     <form class="example-form" #myform="ngForm" novalidate>
       <div class="alert alert-danger" role="alert" *ngIf="errorMessage!=undefined">
         <h2 style="text-align: center;color: rgb(12, 11, 11);"><strong>Oupss</strong></h2>
@@ -45,12 +41,11 @@
     </form>
 
   </div>
-  <mat-dialog-actions>
+
 
       <button mat-fab extended id="btn_valider" (click)="Login()" [disabled]="!myform.form.valid">Se connecter</button>
 
-  </mat-dialog-actions>
+
   <div class="spinner">
     <mat-spinner diameter="30" color="accent" *ngIf="isSpinner"></mat-spinner>
   </div>
-</mat-dialog-content>

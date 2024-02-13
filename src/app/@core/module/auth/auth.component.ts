@@ -32,6 +32,8 @@ export class AuthComponent implements OnInit {
   }
 
   Login(){
+    console.log(this.user);
+
     this.isSpinner=true;
     var userRequest=new UserRequest();
     userRequest.email=this.user.email;
