@@ -1,0 +1,39 @@
+.toolbar-container {
+    height: 85px;
+    //position: fixed;
+    //top:0;
+  }
+  .space{
+   margin-right: 30%;
+  }
+
+  /*.example-container {
+    width: 250px;
+    height: 75%;
+    background-color: white;
+  }*/
+
+  .logo {
+    padding: 0 1.25rem;
+    font-size: 1.75rem;
+    text-align: center;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .logo1{
+    border-radius: 10em;
+  }
+  #logo3{
+    color: #c69294;
+  }
+  #logo2{
+    font-family:cursive;
+    color:black;
+  }
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  .btn_pink{
+    color: #c69294!important;
+  }

@@ -1,0 +1,105 @@
+<mat-dialog-content>
+  <div class="row">
+
+    <div class="col-11">
+      <h2><mat-icon>person_add</mat-icon> Inscription</h2>
+    </div>
+    <div class="col-1"> <button mat-icon-button class="btn_close"
+        (click)="closeDialog()"><mat-icon>close</mat-icon></button></div>
+  </div>
+  <form class="example-form" #myform="ngForm" novalidate>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field class="example-full-width">
+          <mat-label>Nom</mat-label>
+          <input matInput #nom="ngModel"  id="nom" [(ngModel)]="user.nom" name="nom" minlength="1"
+            required>
+            <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="error">
+
+              <div *ngIf="nom.errors?.['required']">
+                <i class='bx bx-error-circle'></i> Veuillez fournir un nom valide.
+              </div>
+            </div>
+        </mat-form-field>
+
+      </div>
+      <div class="col-6">
+        <mat-form-field class="example-full-width">
+          <mat-label>Prénom</mat-label>
+          <input matInput #prenom="ngModel" id="prenom" [(ngModel)]="user.prenom" name="prenom" minlength="1" required>
+          <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)" class="error">
+
+            <div *ngIf="prenom.errors?.['required']">
+              <i class='bx bx-error-circle'></i> Veuillez fournir un prenom valide.
+            </div>
+          </div>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" id="mail" [(ngModel)]="user.email" name="mail" #mail="ngModel"
+          [email]="validateEmail" #prmEmail="ngModel" required>
+          <div *ngIf="(mail.invalid) && (mail.dirty || mail.touched)" class="error">
+            <div *ngIf="prmEmail.errors?.['email']"><i class='bx bx-error-circle'></i>Veuillez fournir une mail valide.</div>
+            <div *ngIf="mail.errors?.['required']"><i class='bx bx-error-circle'></i>Champ Obligatoire.</div>
+          </div>
+
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="example-full-width">
+          <mat-label>Contact</mat-label>
+          <span matTextPrefix>+261 &nbsp;</span>
+          <input matInput type="tel">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="example-full-width">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput [type]="hide1 ? 'password' : 'text'" id="pass" name="pass" [(ngModel)]="user.password" #pass="ngModel" minlength="8"  required>
+
+        <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide1">
+          <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <div *ngIf="(pass.invalid) && (pass.dirty
+        )" class="error">
+          <div *ngIf="pass.errors?.['minlength']"><i class='bx bx-error-circle'></i>le mot de passe doit avoir au moin 8 caractere.</div>
+          <div *ngIf="pass.errors?.['required']"><i class='bx bx-error-circle'></i>Champ Obligatoire.</div>
+
+        </div>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Confirmation du mot de passe</mat-label>
+        <input matInput [type]="hide2 ? 'password' : 'text'" (change)="confirmPass($event)">
+        <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide2">
+          <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <div *ngIf="errorConfirmationPassword">
+          <p class="error">le mot de passe n'est pas identique</p>
+        </div>
+
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Code Postal</mat-label>
+        <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="94043">
+        <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+      </mat-form-field>
+    </div>
+
+
+
+    <mat-dialog-actions>
+      <button mat-fab extended id="btn_valider" [disabled]="!myform.form.valid"
+        (click)="register()"><mat-icon>done</mat-icon> Valider</button>
+        <mat-spinner diameter="30" color="accent" *ngIf="isSpinner"></mat-spinner>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>
